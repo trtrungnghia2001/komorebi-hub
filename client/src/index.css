@@ -1,0 +1,71 @@
+@import "tailwindcss";
+/* Import Swiper styles */
+@import "swiper/css";
+
+:root {
+  /* color */
+  --background: #191b24;
+  --foreground: #ffffff;
+  --footer-bg: #0f111a;
+  --header-bg: #0f111a;
+  --muted-foreground: #aaaaaa;
+
+  --input: #ffffff14;
+}
+@theme {
+  /* color */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-footer-bg: var(--footer-bg);
+  --color-header-bg: var(--header-bg);
+
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-input: var(--input);
+
+  /* aspect */
+  --aspect-thumbnail: 2/3;
+
+  /* size */
+  --text-13: 13px;
+}
+@layer base {
+  body {
+    @apply bg-background text-foreground text-sm;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+  h1 {
+    @apply text-5xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h5 {
+    @apply text-base;
+  }
+  h6 {
+    @apply text-sm;
+  }
+}
+
+@layer components {
+  .link {
+    @apply text-blue-500 underline;
+  }
+  .img {
+    @apply w-full h-full block object-center object-cover;
+  }
+}
