@@ -1,10 +1,10 @@
-export interface Category {
+export interface MangaCategory {
   id: string;
   name: string;
   slug: string;
 }
 
-export interface ChapterLatest {
+export interface MangaChapterLatest {
   filename: string;
   chapter_name: string;
   chapter_title: string;
@@ -19,27 +19,61 @@ export interface MangaItem {
   status: "ongoing" | "coming_soon" | "completed";
   thumb_url: string;
   sub_docquyen: boolean;
-  category: Category[];
+  category: MangaCategory[];
   updatedAt: string;
-  chaptersLatest: ChapterLatest[];
+  chaptersLatest: MangaChapterLatest[];
 }
 
-// Cấu trúc phân trang riêng của otruyen
-export interface OtruyenPagination {
+export interface MangaPagination {
   totalItems: number;
   totalItemsPerPage: number;
   currentPage: number;
   pageRanges: number;
 }
 
+//
+export interface MangaServerData {
+  filename: string;
+  chapter_name: string;
+  chapter_title: string;
+  chapter_api_data: string;
+}
+
+export interface MangaChapter {
+  server_name: string;
+  server_data: MangaServerData[];
+}
+
+export interface MangaDetailItem {
+  _id: string;
+  name: string;
+  slug: string;
+  origin_name: string[];
+  content: string; // Nội dung mô tả truyện (có chứa HTML)
+  status: "ongoing" | "completed" | string;
+  thumb_url: string;
+  sub_docquyen: boolean;
+  author: string[];
+  category: {
+    id: string;
+    name: string;
+    slug: string;
+  }[];
+  chapters: MangaChapter[]; // Danh sách các server và chương phim
+  updatedAt: string;
+}
+
+//
+
 export interface MangaResponse {
   status: string;
   message: string;
   data: {
     items: MangaItem[];
-    APP_DOMAIN_CDN_IMAGE: string; // Quan trọng để nối link ảnh
+    item: MangaDetailItem;
+    APP_DOMAIN_CDN_IMAGE: string;
     params: {
-      pagination: OtruyenPagination;
+      pagination: MangaPagination;
     };
   };
 }

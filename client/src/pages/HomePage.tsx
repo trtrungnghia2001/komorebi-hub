@@ -1,18 +1,20 @@
-import MediaSlide from "@/components/custom/MediaSlide";
-import { phimDanhsach } from "@/services/kkphim";
+import MediaSlide, { GroupSlide } from "@/components/custom/MediaSlide";
+import { phimDanhsach } from "@/services/ophim";
 import { truyenDanhsach } from "@/services/otruyen";
 import { useQuery } from "@tanstack/react-query";
 
 const HomePage = () => {
-  const { data: movie } = useQuery({
+  const { data: movie, isLoading: movieLoading } = useQuery({
     queryKey: ["home", "movie"],
     queryFn: async () =>
       await Promise.all([
-        await phimDanhsach("phim-moi-cap-nhat"),
         await phimDanhsach("phim-chieu-rap"),
+        await phimDanhsach("phim-moi"),
+        await phimDanhsach("phim-thuyet-minh"),
+        await phimDanhsach("hoat-hinh"),
       ]),
   });
-  const { data: manga } = useQuery({
+  const { data: manga, isLoading: mangaLoading } = useQuery({
     queryKey: ["home", "manga"],
     queryFn: async () =>
       await Promise.all([
@@ -25,17 +27,31 @@ const HomePage = () => {
 
   return (
     <div className="">
-      <div className="max-w-7xl mx-auto space-y-14">
+      <div className="max-w-7xl w-full mx-auto space-y-14">
         <GroupSlide>
           <MediaSlide
             name="Phim chiếu rạp"
             type="movie"
-            items={movie?.[1].items}
+            items={movie?.[0].data.items}
+            loading={movieLoading}
           />
           <MediaSlide
             name="Phim mới cập nhật"
             type="movie"
-            items={movie?.[0].items}
+            items={movie?.[1].data.items}
+            loading={movieLoading}
+          />
+          <MediaSlide
+            name="Phim thuyết minh"
+            type="movie"
+            items={movie?.[2].data.items}
+            loading={movieLoading}
+          />
+          <MediaSlide
+            name="Phim hoạt hình"
+            type="movie"
+            items={movie?.[3].data.items}
+            loading={movieLoading}
           />
         </GroupSlide>
         <GroupSlide>
@@ -43,21 +59,25 @@ const HomePage = () => {
             name="Truyện mới cập nhật"
             type="manga"
             items={manga?.[0].data.items}
+            loading={mangaLoading}
           />
           <MediaSlide
             name="Truyện sắp ra mắt"
             type="manga"
             items={manga?.[1].data.items}
+            loading={mangaLoading}
           />
           <MediaSlide
             name="Truyện đang phát hành"
             type="manga"
             items={manga?.[2].data.items}
+            loading={mangaLoading}
           />
           <MediaSlide
             name="Truyện hoàn thành"
             type="manga"
             items={manga?.[3].data.items}
+            loading={mangaLoading}
           />
         </GroupSlide>
       </div>
@@ -66,11 +86,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-const GroupSlide = ({ children }: Readonly<{ children: React.ReactNode }>) => {
-  return (
-    <div className="space-y-10 p-4 md:p-8 bg-linear-0 from-background to-[#282b3a] rounded-lg">
-      {children}
-    </div>
-  );
-};

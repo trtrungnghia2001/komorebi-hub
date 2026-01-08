@@ -1,16 +1,16 @@
-import { phimImg } from "@/services/kkphim";
+import { phimImage } from "@/services/ophim";
 import type { MovieItem } from "@/types";
 import { memo } from "react";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }: { movie: MovieItem }) => {
   return (
-    <Link to={`/`} className="block text-center">
+    <Link to={`/movie/` + movie.slug} className="block text-center">
       <div className="relative">
         <img
           loading="lazy"
           alt="thumb"
-          src={phimImg(movie.poster_url)}
+          src={phimImage(movie.thumb_url)}
           className="rounded-lg overflow-hidden aspect-thumbnail hover:opacity-90 transition-all"
         />
         <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-xs bg-gray-500 text-white rounded-t px-1.5 py-0.5">
