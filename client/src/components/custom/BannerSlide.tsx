@@ -144,6 +144,7 @@ const MovieSlide = ({ movie }: { movie: MovieItem }) => {
           <div className="text-xs space-x-2">
             {movie.category.map((cate) => (
               <Link
+                key={cate.id}
                 to={`/movie/`}
                 className="bg-white/20 py-0.5 px-1.5 text-xs rounded"
               >
