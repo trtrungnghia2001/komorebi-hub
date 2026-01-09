@@ -4,15 +4,31 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import MovieCard from "./MovieCard";
 import type { MangaItem } from "@/types/otruyen";
 import MangaCard from "./MangaCard";
+import { Autoplay, Grid } from "swiper/modules";
+import type { AutoplayOptions, GridOptions, SwiperOptions } from "swiper/types";
 
 type MediaSlideType = {
   name: string;
   type: MediaType;
   items?: MovieItem[] | MangaItem[];
   loading?: boolean;
+  grid?: GridOptions;
+  breakpoints?: {
+    [width: number]: SwiperOptions;
+    [ratio: string]: SwiperOptions;
+  };
+  autoplay?: boolean | AutoplayOptions;
 };
 
-const MediaSlide = ({ name, type, items, loading }: MediaSlideType) => {
+const MediaSlide = ({
+  name,
+  type,
+  items,
+  loading,
+  grid,
+  breakpoints,
+  autoplay,
+}: MediaSlideType) => {
   return (
     <section className="space-y-4">
       <h4>{name}</h4>
@@ -21,20 +37,25 @@ const MediaSlide = ({ name, type, items, loading }: MediaSlideType) => {
         <Swiper
           spaceBetween={16}
           slidesPerView={2.2}
-          breakpoints={{
-            // Tablet (>= 640px)
-            640: {
-              slidesPerView: 3.2,
-            },
-            // Desktop (>= 1024px)
-            1024: {
-              slidesPerView: 6,
-            },
-            // Wide Desktop (>= 1280px)
-            1280: {
-              slidesPerView: 7,
-            },
-          }}
+          grid={grid}
+          autoplay={autoplay}
+          modules={[Grid, Autoplay]}
+          breakpoints={
+            breakpoints ?? {
+              // Tablet (>= 640px)
+              640: {
+                slidesPerView: 3.2,
+              },
+              // Desktop (>= 1024px)
+              1024: {
+                slidesPerView: 6,
+              },
+              // Wide Desktop (>= 1280px)
+              1280: {
+                slidesPerView: 7,
+              },
+            }
+          }
         >
           {/* skeleton */}
           {loading &&

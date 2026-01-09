@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const MangaCard = ({ manga }: { manga: MangaItem }) => {
   return (
-    <Link to={`/manga/` + manga.slug} className="block text-center">
+    <Link to={`/manga/` + manga.slug} className="block">
       <div className="relative">
         <img
           loading="lazy"
@@ -13,14 +13,16 @@ const MangaCard = ({ manga }: { manga: MangaItem }) => {
           src={truyenImage(manga.thumb_url)}
           className="rounded-lg overflow-hidden aspect-thumbnail hover:opacity-90 transition-all"
         />
-        {/* <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-xs bg-gray-500 text-white rounded-t px-1.5 py-0.5">
-          {movie.lang}
-        </span> */}
       </div>
-      <h6 className="line-clamp-1 mt-2">{manga.name}</h6>
-      <p className="text-13 text-muted-foreground line-clamp-1">
-        Chapter {manga.chaptersLatest?.[0]?.chapter_name}
-      </p>
+      <h6 className="line-clamp-2 mt-2 h-10">{manga.name}</h6>
+      <div className="text-muted-foreground border-t border-t-gray-500 pt-2 mt-2">
+        <p className="line-clamp-1 font-medium">
+          Chapter {manga.chaptersLatest?.[0]?.chapter_name}
+        </p>
+        <p className="text-13 text-muted-foreground line-clamp-1">
+          {new Date(manga.updatedAt).toLocaleDateString()}
+        </p>
+      </div>
     </Link>
   );
 };

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 /* Import Swiper styles */
 @import "swiper/css";
+@import "swiper/css/grid";
+@import "swiper/css/pagination";
 
 :root {
   /* color */
@@ -67,5 +69,24 @@
   }
   .img {
     @apply w-full h-full block object-center object-cover;
+  }
+  /* Custom Scrollbar cho toàn bộ trang hoặc class cụ thể */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Độ rộng của thanh cuộn */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #18181b; /* Tương đương zinc-900 */
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #3f3f46; /* Màu xám tối ban đầu (zinc-700) */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #dc2626; /* Đổi sang màu đỏ chủ đạo của ông (red-600) */
   }
 }

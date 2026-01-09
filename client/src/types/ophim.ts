@@ -59,11 +59,65 @@ export interface OPhimPagination {
   pageRanges: number;
 }
 
+//
+export interface RatingStats {
+  id?: string;
+  type?: string;
+  season?: number;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface EpisodeData {
+  name: string; // Tên tập (Tập 1, 2...)
+  slug: string; // Slug tập
+  filename: string; // Tên file gốc (nếu có)
+  link_embed: string; // Link nhúng iframe player
+  link_m3u8: string; // Link stream trực tiếp
+}
+
+export interface ServerEpisode {
+  server_name: string; // "Vietsub #1", "Lồng Tiếng #1"
+  server_data: EpisodeData[];
+}
+
+export interface MovieDetailItem {
+  _id: string;
+  name: string; // Tên tiếng Việt
+  origin_name: string; // Tên gốc (Squid Game)
+  content: string; // Mô tả nội dung (HTML)
+  type: "series" | "single" | "hoathinh" | "tvshows";
+  status: "completed" | "ongoing" | "trailer";
+  thumb_url: string; // Ảnh dọc
+  poster_url: string; // Ảnh ngang (Dùng cho Banner)
+  is_copyright: boolean;
+  trailer_url: string;
+  time: string; // Thời lượng (50 phút / tập)
+  episode_current: string; // Hoàn tất (9/9)
+  episode_total: string; // 9 Tập
+  quality: string; // HD, 4K...
+  lang: string; // Vietsub + Lồng Tiếng
+  year: number;
+  view: number;
+  actor: string[];
+  director: string[];
+  category: { id: string; name: string; slug: string }[];
+  country: { id: string; name: string; slug: string }[];
+  episodes: ServerEpisode[];
+  alternative_names: string[]; // Các tên gọi khác ở quốc gia khác
+  tmdb: RatingStats;
+  imdb: RatingStats;
+  modified: { time: string };
+  created: { time: string };
+}
+
+//
 export interface MovieResponse {
   status: "success" | string;
   message?: string;
   data: {
     items: MovieItem[];
+    item: MovieDetailItem;
     params: {
       pagination: OPhimPagination;
     };
