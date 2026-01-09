@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 /* Import Swiper styles */
 @import "swiper/css";
 @import "swiper/css/grid";
@@ -15,6 +16,9 @@
   --input: #ffffff14;
 }
 @theme {
+  /* font */
+  --font-plus: "Plus Jakarta Sans", ui-sans-serif, system-ui;
+  --font-syne: "Syne", sans-serif;
   /* color */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -30,10 +34,14 @@
 
   /* size */
   --text-13: 13px;
+  --text-10: 10px;
 }
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    @apply bg-background text-foreground text-sm;
+    @apply bg-background text-foreground text-sm font-plus;
   }
   h1,
   h2,
@@ -60,6 +68,9 @@
   }
   h6 {
     @apply text-sm;
+  }
+  button {
+    @apply cursor-pointer;
   }
 }
 

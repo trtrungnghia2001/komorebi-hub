@@ -4,6 +4,7 @@ import ButtonTheme from "./ButtonTheme";
 import clsx from "clsx";
 import InputSearch from "./InputSearch";
 import { MdInstallMobile } from "react-icons/md";
+import { CgMenuRightAlt } from "react-icons/cg";
 // import logo from "@/assets/logo.png";
 
 const navs = [
@@ -36,7 +37,7 @@ const Header = () => {
         <InputSearch className="w-xs" />
         <div className="flex-1 flex items-center justify-between">
           <nav>
-            <ul className="flex items-center gap-4">
+            <ul className="hidden xl:flex items-center gap-4">
               {navs.map((nav) => (
                 <li key={nav.path}>
                   <NavLink
@@ -66,6 +67,9 @@ const Header = () => {
             >
               Đăng nhập
             </Link>
+            <button>
+              <CgMenuRightAlt size={20} />
+            </button>
           </div>
         </div>
       </div>

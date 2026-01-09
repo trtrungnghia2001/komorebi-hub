@@ -13,7 +13,7 @@ const MovieCard = ({ movie }: { movie: MovieItem }) => {
           src={phimImage({ thumb_url: movie.thumb_url })}
           className="rounded-lg overflow-hidden aspect-thumbnail hover:opacity-90 transition-all"
         />
-        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-xs bg-gray-500 text-white rounded-t px-1.5 py-0.5">
+        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-10 bg-gray-500 text-white rounded-t px-1.5 py-0.5">
           {movie.lang}
         </span>
       </div>

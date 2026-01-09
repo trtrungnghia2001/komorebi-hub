@@ -1,4 +1,8 @@
-import type { MangaListType, MangaResponse } from "@/types";
+import type {
+  MangaChapterResponse,
+  MangaListType,
+  MangaResponse,
+} from "@/types";
 import axios from "axios";
 
 const axiosTruyen = axios.create({
@@ -20,4 +24,11 @@ export async function truyenDanhsach(type: MangaListType) {
 }
 export async function truyenBySlug(slug: string) {
   return (await axiosTruyen.get<MangaResponse>(`/truyen-tranh/` + slug)).data;
+}
+export async function truyenChapterById(id: string) {
+  return (
+    await axios.get<MangaChapterResponse>(
+      `https://sv1.otruyencdn.com/v1/api/chapter/` + id
+    )
+  ).data;
 }

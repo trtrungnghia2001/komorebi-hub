@@ -91,7 +91,7 @@ const BannerSlide = ({ items, loading, type }: BannerSlideType) => {
                     src={phimImage({ thumb_url: item.thumb_url })}
                     className={clsx([
                       `aspect-thumbnail rounded-lg border-2 cursor-pointer`,
-                      activeIndex === idx && `border-blue-500`,
+                      activeIndex === idx && `border-red-500`,
                     ])}
                   />
                 )}

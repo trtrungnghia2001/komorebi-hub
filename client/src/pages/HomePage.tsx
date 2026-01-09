@@ -1,6 +1,6 @@
 import BannerSlide from "@/components/custom/BannerSlide";
 import MediaSlide, { GroupSlide } from "@/components/custom/MediaSlide";
-import { phimDanhsach, phimHome } from "@/services/ophim";
+import { phimDanhsach } from "@/services/ophim";
 import { truyenDanhsach } from "@/services/otruyen";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight } from "react-icons/fa";
@@ -10,9 +10,9 @@ const HomePage = () => {
     queryKey: ["home", "movie"],
     queryFn: async () =>
       await Promise.all([
-        await phimHome(),
         await phimDanhsach("phim-chieu-rap"),
         await phimDanhsach("phim-moi"),
+        await phimDanhsach("hoat-hinh"),
       ]),
   });
   const { data: manga, isLoading: mangaLoading } = useQuery({
@@ -85,13 +85,13 @@ const HomePage = () => {
         {/* slide */}
         <GroupSlide>
           <MediaSlide
-            name="Phim chiếu rạp"
+            name="Phim mới cập nhật"
             type="movie"
             items={movie?.[1].data.items}
             loading={movieLoading}
           />
           <MediaSlide
-            name="Phim mới cập nhật"
+            name="Phim hoạt hình"
             type="movie"
             items={movie?.[2].data.items}
             loading={movieLoading}
