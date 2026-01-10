@@ -153,7 +153,7 @@ const MovieSlide = ({ movie }: { movie: MovieItem }) => {
             ))}
           </div>
         </div>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground line-clamp-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
           molestias? Atque in mollitia qui dicta esse maiores aspernatur ad.
           Error nostrum assumenda animi blanditiis tenetur, aut quaerat ea nulla

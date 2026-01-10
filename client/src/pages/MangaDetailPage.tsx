@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import book from "@/assets/icon/book.svg";
+import Wrapper from "@/components/layout/Wrapper";
 
 const MangaDetailPage = () => {
   const { slug } = useParams();
@@ -27,7 +28,7 @@ const MangaDetailPage = () => {
   }, [mangaInfo]);
 
   return (
-    <div className="max-w-7xl w-full mx-auto space-y-14 py-8 px-4">
+    <Wrapper className="space-y-10 py-8 px-4">
       {/* info */}
       <section className="flex flex-col md:flex-row items-center md:items-start gap-8">
         <img
@@ -76,7 +77,7 @@ const MangaDetailPage = () => {
           <ul className="max-h-145 overflow-y-auto custom-scrollbar">
             {chapterData.map((chapter) => (
               <li
-                key={chapter.chapter_name}
+                key={chapter.chapter_api_data}
                 className="border-b border-b-gray-500 last:border-none hover:bg-gray-800"
               >
                 <Link
@@ -97,7 +98,7 @@ const MangaDetailPage = () => {
           <h3 className="text-sky-600">TRUYỆN LIÊN QUAN</h3>
         </section>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 

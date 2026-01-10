@@ -34,7 +34,7 @@ const Header = () => {
             className="w-28"
           />
         </Link>
-        <InputSearch className="w-xs" />
+        <InputSearch className="w-xs hidden md:block" />
         <div className="flex-1 flex items-center justify-between">
           <nav>
             <ul className="hidden xl:flex items-center gap-4">
@@ -51,7 +51,10 @@ const Header = () => {
             </ul>
           </nav>
           <div className="flex items-center gap-4 text-13">
-            <Link to={`/`} className="flex items-center gap-1">
+            <Link
+              to={`/download-app`}
+              className="hidden md:flex items-center gap-1"
+            >
               <MdInstallMobile size={32} className="text-yellow-500" />
               <p className="">
                 <span className="text-muted-foreground text-xs block">

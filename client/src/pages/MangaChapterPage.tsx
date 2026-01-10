@@ -37,6 +37,7 @@ const MangaChapterPage = () => {
               }
               alt="image"
               loading="lazy"
+              className="w-full h-auto"
             />
           </li>
         ))}

@@ -6,6 +6,10 @@ import MangaDetailPage from "./pages/MangaDetailPage";
 import MangaChapterPage from "./pages/MangaChapterPage";
 import { useEffect } from "react";
 import SearchPage from "./pages/SearchPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import MangaPage from "./pages/MangaPage";
+import MovieDetailPage from "./pages/MovieDetailPage";
+import Breadcrumb from "./components/layout/Breadcrumb";
 
 const App = () => {
   const routes = useRoutes([
@@ -18,12 +22,28 @@ const App = () => {
       element: <SearchPage />,
     },
     {
+      path: `movie`,
+      element: <MangaPage />,
+    },
+    {
+      path: `movie/:slug`,
+      element: <MovieDetailPage />,
+    },
+    {
+      path: `manga`,
+      element: <MangaPage />,
+    },
+    {
       path: `manga/:slug`,
       element: <MangaDetailPage />,
     },
     {
       path: `manga/:slug/chapter/:id`,
       element: <MangaChapterPage />,
+    },
+    {
+      path: "*",
+      element: <NotFoundPage />,
     },
   ]);
 
@@ -34,7 +54,9 @@ const App = () => {
   return (
     <div>
       <Header />
+      <Breadcrumb />
       {routes}
+
       <Footer />
     </div>
   );

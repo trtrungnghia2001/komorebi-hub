@@ -6,17 +6,6 @@ const axiosPhim = axios.create({
 });
 export async function phimHome() {
   return (await axiosPhim.get<MovieResponse>(`/home?limit=10`)).data;
-
-  // const bgUrls = await Promise.all(
-  //   getHome.data.items.map(async (phim) => {
-  //     return (await axiosPhim.get<MovieResponse>(`/phim/` + phim.slug)).data
-  //       .data.item;
-  //   })
-  // );
-
-  // console.log({ bgUrls });
-
-  // return getHome;
 }
 export async function phimDanhsach(type: MovieListType) {
   return (await axiosPhim.get<MovieResponse>(`/danh-sach/` + type)).data;
@@ -24,6 +13,14 @@ export async function phimDanhsach(type: MovieListType) {
 export async function phimBySlug(slug: string) {
   return (await axiosPhim.get<MovieResponse>(`/phim/` + slug)).data;
 }
+export async function phimBySlugImages(slug: string) {
+  return (await axiosPhim.get<MovieResponse>(`/phim/` + slug + `/images`)).data;
+}
+export async function phimBySlugPeoples(slug: string) {
+  return (await axiosPhim.get<MovieResponse>(`/phim/` + slug + `/peoples`))
+    .data;
+}
+//
 export function phimImage({
   width = 250,
   thumb_url,
@@ -43,4 +40,14 @@ export function phimImage({
   return `https://images.weserv.nl/?url=${encodeURIComponent(
     thumb
   )}&w=${width}&q=75&output=webp`;
+}
+export function getTMDBImage({
+  path,
+  size = "w500",
+}: {
+  path: string;
+  size?: "w500" | "w1280" | "original";
+}) {
+  if (!path) return "/placeholder-image.jpg";
+  return `https://image.tmdb.org/t/p/${size}${path}`;
 }

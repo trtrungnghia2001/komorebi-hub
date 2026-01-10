@@ -4,19 +4,16 @@ import { MdSearch } from "react-icons/md";
 
 const InputSearch = ({ className, ...props }: ComponentProps<"input">) => {
   return (
-    <div
-      className={clsx([
-        `bg-input px-4 py-2 rounded-lg flex items-center gap-2`,
-        className,
-      ])}
-    >
-      <MdSearch size={20} />
-      <input
-        type="text"
-        placeholder="Tìm kiếm phim, diễn viên, truyện, anime"
-        className="w-full border-none outline-none"
-        {...props}
-      />
+    <div className={clsx([`bg-input px-4 py-2 rounded-lg `, className])}>
+      <div className="flex items-center gap-2">
+        <MdSearch size={20} />
+        <input
+          type="text"
+          placeholder="Tìm kiếm phim, diễn viên, truyện, anime"
+          className="w-full border-none outline-none"
+          {...props}
+        />
+      </div>
     </div>
   );
 };

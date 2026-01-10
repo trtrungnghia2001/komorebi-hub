@@ -6,6 +6,7 @@
 @import "swiper/css/pagination";
 
 :root {
+  --heading-scale: 1;
   /* color */
   --background: #191b24;
   --foreground: #ffffff;
@@ -14,8 +15,11 @@
   --muted-foreground: #aaaaaa;
 
   --input: #ffffff14;
+  --border: #ffffff14;
 }
 @theme {
+  --spacing-8xl: 96rem;
+  --breakpoint-8xl: 96rem;
   /* font */
   --font-plus: "Plus Jakarta Sans", ui-sans-serif, system-ui;
   --font-syne: "Syne", sans-serif;
@@ -28,6 +32,7 @@
   --color-muted-foreground: var(--muted-foreground);
 
   --color-input: var(--input);
+  --color-border: var(--border);
 
   /* aspect */
   --aspect-thumbnail: 2/3;
@@ -41,7 +46,13 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-background text-foreground text-sm font-plus;
+    @apply bg-background text-foreground text-sm;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --heading-scale: 0.75 !important;
+    }
   }
   h1,
   h2,
@@ -49,25 +60,36 @@
   h4,
   h5,
   h6 {
-    @apply font-bold;
+    @apply font-bold font-plus duration-300 tracking-tight;
   }
   h1 {
-    @apply text-5xl;
+    font-size: calc(3rem * var(--heading-scale)); /* Gốc 48px -> Mobile 36px */
   }
+
   h2 {
-    @apply text-3xl;
+    font-size: calc(
+      1.875rem * var(--heading-scale)
+    ); /* Gốc 30px -> Mobile 22.5px */
   }
+
   h3 {
-    @apply text-2xl;
+    font-size: calc(
+      1.5rem * var(--heading-scale)
+    ); /* Gốc 24px -> Mobile 18px */
   }
+
   h4 {
-    @apply text-xl;
+    font-size: calc(
+      1.25rem * var(--heading-scale)
+    ); /* Gốc 20px -> Mobile 15px */
   }
+
   h5 {
-    @apply text-base;
+    font-size: calc(1rem * var(--heading-scale)); /* Gốc 16px -> Mobile 12px */
   }
+
   h6 {
-    @apply text-sm;
+    font-size: 0.875rem;
   }
   button {
     @apply cursor-pointer;

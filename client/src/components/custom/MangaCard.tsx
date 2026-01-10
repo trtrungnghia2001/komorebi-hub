@@ -5,7 +5,20 @@ import { Link } from "react-router-dom";
 
 const MangaCard = ({ manga }: { manga: MangaItem }) => {
   return (
-    <Link to={`/manga/` + manga.slug} className="block">
+    <Link
+      to={`/manga/` + manga.slug}
+      state={[
+        {
+          label: "Truyện",
+          path: "/manga",
+        },
+        {
+          label: manga.name,
+          path: "/manga/" + manga.slug,
+        },
+      ]}
+      className="block"
+    >
       <div className="relative">
         <img
           loading="lazy"
