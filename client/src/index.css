@@ -32,6 +32,8 @@
   --color-muted-foreground: var(--muted-foreground);
 
   --color-input: var(--input);
+  --color-select: var(--input);
+  --color-button: var(--input);
   --color-border: var(--border);
 
   /* aspect */
@@ -93,6 +95,9 @@
   }
   button {
     @apply cursor-pointer;
+  }
+  option {
+    @apply bg-slate-800;
   }
 }
 

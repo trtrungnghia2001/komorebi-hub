@@ -132,12 +132,32 @@ export interface MoviePeopleItem {
   also_known_as: string[];
 }
 
+export interface MovieDetailCategory {
+  _id: string;
+  name: string;
+  slug: string;
+}
+
+export interface MovieDetailCountry {
+  _id: string;
+  name: string;
+  slug: string;
+}
+
+export interface MovieDetailYear {
+  year: number;
+}
+
 //
 export interface MovieResponse {
   status: "success" | string;
   message?: string;
   data: {
-    items: MovieItem[];
+    items:
+      | MovieItem[]
+      | MovieDetailCategory[]
+      | MovieDetailCountry[]
+      | MovieDetailYear[];
     item: MovieDetailItem;
     images: MovieImageItem[];
     peoples: MoviePeopleItem[];

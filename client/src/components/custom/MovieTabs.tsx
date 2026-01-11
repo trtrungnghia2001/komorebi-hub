@@ -4,7 +4,7 @@ import {
   phimBySlugPeoples,
   phimCategoryBySlug,
 } from "@/services/ophim";
-import type { MoviePeopleItem, ServerEpisode } from "@/types";
+import type { MovieItem, MoviePeopleItem, ServerEpisode } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import { useMemo } from "react";
@@ -162,9 +162,9 @@ export const Suggest = ({ category }: { category: string }) => {
   return (
     <div>
       <ul className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        {data?.data.items.map((movie) => (
-          <li key={movie._id}>
-            <MovieCard movie={movie} />
+        {data?.data.items.map((movie, idx) => (
+          <li key={idx}>
+            <MovieCard movie={movie as MovieItem} />
           </li>
         ))}
       </ul>

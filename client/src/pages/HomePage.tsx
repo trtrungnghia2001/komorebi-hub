@@ -3,6 +3,7 @@ import MediaSlide, { GroupSlide } from "@/components/custom/MediaSlide";
 import Wrapper from "@/components/layout/Wrapper";
 import { phimDanhsach } from "@/services/ophim";
 import { truyenDanhsach } from "@/services/otruyen";
+import type { MovieItem } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -79,7 +80,7 @@ const HomePage = () => {
       {/* banner */}
       <BannerSlide
         loading={movieLoading}
-        items={movie?.[0].data.items}
+        items={movie?.[0].data.items as MovieItem[]}
         type="movie"
       />
       {/* slide */}
@@ -87,13 +88,13 @@ const HomePage = () => {
         <MediaSlide
           name="Phim mới cập nhật"
           type="movie"
-          items={movie?.[1].data.items}
+          items={movie?.[1].data.items as MovieItem[]}
           loading={movieLoading}
         />
         <MediaSlide
           name="Phim hoạt hình"
           type="movie"
-          items={movie?.[2].data.items}
+          items={movie?.[2].data.items as MovieItem[]}
           loading={movieLoading}
         />
       </GroupSlide>

@@ -7,8 +7,10 @@ const axiosPhim = axios.create({
 export async function phimHome() {
   return (await axiosPhim.get<MovieResponse>(`/home?limit=10`)).data;
 }
-export async function phimDanhsach(type: MovieListType) {
-  return (await axiosPhim.get<MovieResponse>(`/danh-sach/` + type)).data;
+export async function phimDanhsach(type: MovieListType, query: string = "") {
+  return (
+    await axiosPhim.get<MovieResponse>(`/danh-sach/` + type + "?" + query)
+  ).data;
 }
 export async function phimBySlug(slug: string) {
   return (await axiosPhim.get<MovieResponse>(`/phim/` + slug)).data;
@@ -23,9 +25,17 @@ export async function phimBySlugPeoples(slug: string) {
 export async function phimCategoryBySlug(slug: string) {
   return (await axiosPhim.get<MovieResponse>(`/the-loai/` + slug)).data;
 }
-export async function phimSearch(keyword: string) {
-  return (await axiosPhim.get<MovieResponse>(`/tim-kiem?keyword=` + keyword))
-    .data;
+export async function phimSearch(query: string = "") {
+  return (await axiosPhim.get<MovieResponse>(`/tim-kiem?` + query)).data;
+}
+export async function phimCategories() {
+  return (await axiosPhim.get<MovieResponse>(`/the-loai`)).data;
+}
+export async function phimCountries() {
+  return (await axiosPhim.get<MovieResponse>(`/quoc-gia`)).data;
+}
+export async function phimYears() {
+  return (await axiosPhim.get<MovieResponse>(`/nam-phat-hanh`)).data;
 }
 //
 export function phimImage({

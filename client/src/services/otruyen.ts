@@ -32,3 +32,6 @@ export async function truyenChapterById(id: string) {
     )
   ).data;
 }
+export async function truyenSearch(query: string = "") {
+  return (await axiosTruyen.get<MangaResponse>(`/tim-kiem?` + query)).data;
+}
