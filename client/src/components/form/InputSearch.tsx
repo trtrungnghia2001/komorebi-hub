@@ -9,8 +9,8 @@ const InputSearch = ({ className, ...props }: ComponentProps<"input">) => {
         <MdSearch size={20} />
         <input
           type="text"
-          placeholder="Tìm kiếm phim, diễn viên, truyện, anime"
-          className="w-full border-none outline-none"
+          placeholder="Tìm kiếm phim, truyện, anime"
+          className="w-full border-none outline-none bg-transparent"
           {...props}
         />
       </div>

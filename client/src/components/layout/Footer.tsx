@@ -34,14 +34,6 @@ const links = [
 const Footer = () => {
   return (
     <footer className="py-8 px-4 md:px-12 bg-footer-bg space-y-4">
-      <Link to={`/`} className="block">
-        <img
-          src="https://www.rophim.li/images/logo.svg"
-          alt="logo"
-          loading="lazy"
-          className="w-52"
-        />
-      </Link>
       <ul className="flex flex-wrap gap-4">
         {links.map((item) => (
           <li key={item.path}>
@@ -50,7 +42,7 @@ const Footer = () => {
         ))}
       </ul>
       <div className="text-muted-foreground space-y-2">
-        <p>Komorebi – Trang tổng hợp film, manga, anime, databook.</p>
+        <p>CimangaHub – Trang tổng hợp film, manga, anime, databook.</p>
         <p>
           Xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng
           tiếng full HD. Kho phim mới khổng lồ, phim chiếu rạp, phim bộ, phim lẻ

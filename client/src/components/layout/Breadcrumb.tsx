@@ -1,9 +1,7 @@
-import { memo, useMemo } from "react";
+import { memo, useMemo, type ComponentProps } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// export type BreadcrumbType = { label: string; path: string };
-
-const Breadcrumb = () => {
+const Breadcrumb = ({ className, ...props }: ComponentProps<"div">) => {
   const location = useLocation();
 
   const breadcrumbs = useMemo(() => {
@@ -30,19 +28,21 @@ const Breadcrumb = () => {
   if (breadcrumbs.length === 0) return null;
 
   return (
-    <nav className="flex flex-wrap font-medium transition-all px-4">
-      <Link to={`/`} className="hover:text-blue-500">
-        Home
-      </Link>
-      {breadcrumbs.map((item) => (
-        <p key={item.path} className="ml-2 space-x-2">
-          <span>/</span>
-          <Link to={item.path} className="hover:text-blue-500">
-            {item.label}
-          </Link>
-        </p>
-      ))}
-    </nav>
+    <div className={className} {...props}>
+      <nav className="flex flex-wrap font-medium transition-all">
+        <Link to={`/`} className="hover:text-blue-500">
+          Home
+        </Link>
+        {breadcrumbs.map((item) => (
+          <p key={item.path} className="ml-2 space-x-2">
+            <span>/</span>
+            <Link to={item.path} className="hover:text-blue-500">
+              {item.label}
+            </Link>
+          </p>
+        ))}
+      </nav>
+    </div>
   );
 };
 

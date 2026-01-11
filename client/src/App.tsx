@@ -9,7 +9,6 @@ import SearchPage from "./pages/SearchPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import MangaPage from "./pages/MangaPage";
 import MovieDetailPage from "./pages/MovieDetailPage";
-import Breadcrumb from "./components/layout/Breadcrumb";
 
 const App = () => {
   const routes = useRoutes([
@@ -54,9 +53,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Breadcrumb />
-      {routes}
-
+      <main>{routes}</main>
       <Footer />
     </div>
   );

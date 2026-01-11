@@ -2,16 +2,17 @@ import { memo } from "react";
 import { Link, NavLink } from "react-router-dom";
 import ButtonTheme from "./ButtonTheme";
 import clsx from "clsx";
-import InputSearch from "./InputSearch";
+import InputSearch from "../form/InputSearch";
 import { MdInstallMobile } from "react-icons/md";
 import { CgMenuRightAlt } from "react-icons/cg";
+import Logo from "../custom/Logo";
 // import logo from "@/assets/logo.png";
 
 const navs = [
-  { title: `Phim`, path: `/movie` },
-  { title: `Truyện`, path: `/manga` },
-  { title: `Anime`, path: `/anime` },
-  { title: `Databook`, path: `/data-book` },
+  { title: `Phim`, path: `/search?media_type=movie` },
+  { title: `Truyện`, path: `/search?media_type=manga` },
+  { title: `Anime`, path: `/search?media_type=anime` },
+  { title: `Databook`, path: `/search?media_type=data-book` },
   { title: `Tìm kiếm`, path: `/search` },
   { title: `Giới thiệu`, path: `/about` },
   { title: `Liên hệ`, path: `/contact` },
@@ -26,14 +27,8 @@ const Header = () => {
       ])}
     >
       <div className="flex items-center justify-between gap-4">
-        <Link to={`/`} className="block">
-          <img
-            src="https://www.rophim.li/images/logo.svg"
-            alt="logo"
-            loading="lazy"
-            className="w-28"
-          />
-        </Link>
+        <Logo />
+
         <InputSearch className="w-xs hidden md:block" />
         <div className="flex-1 flex items-center justify-between">
           <nav>
@@ -42,7 +37,12 @@ const Header = () => {
                 <li key={nav.path}>
                   <NavLink
                     to={nav.path}
-                    className={clsx([`hover:text-yellow-500`])}
+                    className={({ isActive }) =>
+                      clsx([
+                        `hover:text-yellow-500`,
+                        isActive && `text-yellow-500`,
+                      ])
+                    }
                   >
                     {nav.title}
                   </NavLink>

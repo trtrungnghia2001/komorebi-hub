@@ -20,6 +20,13 @@ export async function phimBySlugPeoples(slug: string) {
   return (await axiosPhim.get<MovieResponse>(`/phim/` + slug + `/peoples`))
     .data;
 }
+export async function phimCategoryBySlug(slug: string) {
+  return (await axiosPhim.get<MovieResponse>(`/the-loai/` + slug)).data;
+}
+export async function phimSearch(keyword: string) {
+  return (await axiosPhim.get<MovieResponse>(`/tim-kiem?keyword=` + keyword))
+    .data;
+}
 //
 export function phimImage({
   width = 250,
